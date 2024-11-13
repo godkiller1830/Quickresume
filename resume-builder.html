@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Builder</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Resume Builder</h1>
+        <button id="saveDraftButton">Save as Draft</button>
+        <button id="downloadButton">Download as PDF</button>
+    </header>
+
+    <main>
+        <!-- Form sections remain the same -->
+        <section id="resumeForm">
+            <!-- Previous form content remains the same -->
+        </section>
+
+        <section id="resumePreview">
+            <h2>Preview</h2>
+            <div id="previewContent"></div>
+        </section>
+    </main>
+
+    <script type="module">
+        import { 
+            auth, 
+            db, 
+            doc, 
+            setDoc, 
+            getDoc 
+        } from './js/firebaseConfig.js';
+        
+        // Previous functions remain the same
+        
+        // Save as Draft
+        document.getElementById("saveDraftButton").addEventListener("click", async () => {
+            const user = auth.currentUser;
+            if (user) {
+                const userId = user.uid;
+                const resumeData = {
+                    name: document.getElementById("name").value,
+                    experience: document.getElementById("experience").value,
+                    education: document.getElementById("education").value,
+                    skills: document.getElementById("skills").value,
+                    summary: document.getElementById("summary").value,
+                    lastUpdated: new Date().toISOString()
+                };
+                
+                try {
+                    await setDoc(doc(db, "users", userId, "resumes", "draft"), resumeData);
+                    alert("Draft saved successfully!");
+                } catch (error) {
+                    console.error("Error saving draft:", error);
+                    alert("Error saving draft: " + error.message);
+                }
+            } else {
+                alert("Please sign in to save your resume.");
+                window.location.href = "login.html";
+            }
+        });
+
+        // Rest of the code remains the same
+    </script>
+</body>
+</html>

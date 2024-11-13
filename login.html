@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Login to Resume Builder</h1>
+    
+    <!-- Login form for email and password -->
+    <form id="loginForm">
+        <label for="email">Email:</label>
+        <input type="email" id="email" required>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" required>
+        
+        <button type="submit">Login</button>
+    </form>
+
+    <p id="errorMessage" style="color: red;"></p> <!-- Error message placeholder -->
+
+    <!-- Firebase SDKs -->
+    <script type="module">
+        import { auth } from "./js/firebaseConfig.js";
+        import { signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+        // Handle form submission
+        const loginForm = document.getElementById("loginForm");
+        const errorMessage = document.getElementById("errorMessage");
+
+        loginForm.addEventListener("submit", async (e) => {
+            e.preventDefault(); // Prevent form from refreshing the page
+
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                // Sign in with email and password
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                // Redirect to dashboard.html upon successful login
+                window.location.href = "dashboard.html";
+            } catch (error) {
+                // Display error message to the user
+                errorMessage.textContent = "Error: " + error.message;
+                console.error("Error during sign-in:", error);
+            }
+        });
+
+        // Automatically redirect if user is already signed in
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                window.location.href = "dashboard.html";
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Resume Builder</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <header>
+            <nav>
+                <h1>Welcome, <span id="userName">User</span>!</h1>
+                <div class="nav-buttons">
+                    <button id="signOutButton" class="btn btn-secondary">Sign Out</button>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <section class="saved-resumes">
+                <h2>Your Resumes</h2>
+                <div id="savedResumes" class="templates-grid">
+                    <!-- Saved resumes will be loaded here -->
+                </div>
+            </section>
+
+            <section class="templates">
+                <h2>Resume Templates</h2>
+                <div class="templates-grid">
+                    <div class="template-card">
+                        <img src="templates/professional.png" alt="Professional Template">
+                        <div class="template-info">
+                            <h3>Professional</h3>
+                            <p>Clean and modern design for corporate positions</p>
+                            <button class="btn btn-primary" onclick="window.location.href='resume-builder.html?template=professional'">
+                                Use Template
+                            </button>
+                        </div>
+                    </div>
+                    <div class="template-card">
+                        <img src="templates/creative.png" alt="Creative Template">
+                        <div class="template-info">
+                            <h3>Creative</h3>
+                            <p>Stand out with a unique layout for creative roles</p>
+                            <button class="btn btn-primary" onclick="window.location.href='resume-builder.html?template=creative'">
+                                Use Template
+                            </button>
+                        </div>
+                    </div>
+                    <div class="template-card coming-soon">
+                        <div class="template-info">
+                            <h3>More Templates Coming Soon</h3>
+                            <p>We're working on adding more professional templates</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="js/firebaseConfig.js"></script>
+    <script type="module" src="js/auth.js"></script>
+    <script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
