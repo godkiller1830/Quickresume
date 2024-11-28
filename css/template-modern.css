@@ -1,0 +1,122 @@
+/* template-modern.scss */
+/* base.scss */
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f8fafc;
+}
+
+.resume-preview {
+  padding: 1rem;
+  font-size: 14px;
+}
+
+/* Add other general styling here */
+.resume-preview {
+  background-color: #f4f4f4;
+  color: #2a2a2a;
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Add other unique styles for the modern template */
+
+/*# sourceMappingURL=template-modern.css.map */
+/* Modern Template */
+.resume-preview {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Lato', sans-serif;
+  background: white;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+}
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 40px;
+  padding: 40px;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.full-name {
+  font-size: 2.8rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 10px;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.9rem;
+}
+
+.about {
+  grid-column: 1 / -1;
+}
+
+#position {
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 15px;
+}
+
+.details {
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 40px;
+}
+
+.section {
+  margin-bottom: 35px;
+}
+
+.section__title {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #667eea;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.section__title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 30px;
+  height: 2px;
+  background: #764ba2;
+}
+
+.section__list-item {
+  margin-bottom: 25px;
+}
+
+.section__list-item h3 {
+  color: #2d3748;
+  margin-bottom: 5px;
+}
+
+.light {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.skills-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+}
+
+.skill-tag {
+  background: #f7fafc;
+  padding: 8px 15px;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-align: center;
+  border: 1px solid #e2e8f0;
+}

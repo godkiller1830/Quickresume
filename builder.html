@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <title>Resume Builder - Create Your Resume</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/builder.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script type="module" src="script.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,500,600,700,800&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-content">
+        <div class="logo">QuickResume</div>
+        <div class="nav-links">
+          <a href="/" class="nav-link">Home</a>
+          <a href="/dashboard.html" class="nav-link">Dashboard</a>
+          <button id="themeToggle" class="theme-toggle">
+            <i class="fas fa-moon"></i>
+          </button>
+          <a href="/login.html" class="nav-link">
+            <button class="logout-btn">
+              <i class="fas fa-sign-out-alt"></i>
+              Log Out
+            </button>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="builder-container">
+      <div class="form-container">
+        <div class="template-selector">
+          <label for="templateSelect">Choose Your Template Style</label>
+          <select id="templateSelect" class="template-select">
+            <option value="default">Professional Classic</option>
+            <option value="modern">Modern Minimal</option>
+            <option value="elegant">Elegant Executive</option>
+          </select>
+        </div>
+
+        <div class="progress-bar">
+          <div class="progress-step active" data-step="1">
+            <i class="fas fa-user"></i>
+            <span>Personal</span>
+          </div>
+          <div class="progress-step" data-step="2">
+            <i class="fas fa-briefcase"></i>
+            <span>Experience</span>
+          </div>
+          <div class="progress-step" data-step="3">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Education</span>
+          </div>
+          <div class="progress-step" data-step="4">
+            <i class="fas fa-tools"></i>
+            <span>Skills</span>
+          </div>
+          <div class="progress-step" data-step="5">
+            <i class="fas fa-file-alt"></i>
+            <span>Summary</span>
+          </div>
+          <div class="progress-step" data-step="6">
+            <i class="fas fa-star"></i>
+            <span>Additional</span>
+          </div>
+        </div>
+
+        <form id="resumeForm" class="resume-form">
+          <div class="form-section active" data-section="1">
+            <h2>Personal Information</h2>
+            <div class="form-group">
+              <div class="input-group">
+                <i class="fas fa-user input-icon"></i>
+                <input type="text" name="fullName" placeholder="Full Name" required>
+              </div>
+              <div class="input-group">
+                <i class="fas fa-briefcase input-icon"></i>
+                <input type="text" name="professionalTitle" placeholder="Professional Title" required>
+              </div>
+              <div class="input-group">
+                <i class="fas fa-envelope input-icon"></i>
+                <input type="email" name="email" placeholder="Email" required>
+              </div>
+              <div class="input-group">
+                <i class="fas fa-phone input-icon"></i>
+                <input type="tel" name="phone" placeholder="Phone" required>
+              </div>
+              <div class="input-group">
+                <i class="fas fa-map-marker-alt input-icon"></i>
+                <input type="text" name="location" placeholder="Location">
+              </div>
+              <div class="input-group">
+                <i class="fab fa-linkedin input-icon"></i>
+                <input type="url" name="linkedin" placeholder="LinkedIn URL">
+              </div>
+              <div class="input-group">
+                <i class="fas fa-globe input-icon"></i>
+                <input type="url" name="portfolio" placeholder="Portfolio URL">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section" data-section="2">
+            <h2>Work Experience</h2>
+            <div id="experienceFields">
+              <div class="form-group experience-entry">
+                <div class="input-group">
+                  <i class="fas fa-briefcase input-icon"></i>
+                  <input type="text" name="jobTitle[]" placeholder="Job Title" required>
+                </div>
+                <div class="input-group">
+                  <i class="fas fa-building input-icon"></i>
+                  <input type="text" name="company[]" placeholder="Company" required>
+                </div>
+                <div class="input-group">
+                  <i class="fas fa-map-marker-alt input-icon"></i>
+                  <input type="text" name="location[]" placeholder="Location">
+                </div>
+                <div class="date-range">
+                  <div class="input-group">
+                    <i class="fas fa-calendar input-icon"></i>
+                    <input type="month" name="startDate[]" required>
+                  </div>
+                  <div class="input-group">
+                    <i class="fas fa-calendar input-icon"></i>
+                    <input type="month" name="endDate[]">
+                  </div>
+                </div>
+                <div class="input-group">
+                  <i class="fas fa-tasks input-icon"></i>
+                  <textarea name="jobDescription[]" placeholder="Job Description" rows="4" required></textarea>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="add-more-btn" data-field="experience">
+              <i class="fas fa-plus"></i> Add More Experience
+            </button>
+          </div>
+
+          <div class="form-section" data-section="3">
+            <h2>Education</h2>
+            <div id="educationFields">
+              <div class="form-group education-entry">
+                <div class="input-group">
+                  <i class="fas fa-graduation-cap input-icon"></i>
+                  <input type="text" name="degree[]" placeholder="Degree/Certificate" required>
+                </div>
+                <div class="input-group">
+                  <i class="fas fa-university input-icon"></i>
+                  <input type="text" name="school[]" placeholder="School/Institution" required>
+                </div>
+                <div class="input-group">
+                  <i class="fas fa-map-marker-alt input-icon"></i>
+                  <input type="text" name="eduLocation[]" placeholder="Location">
+                </div>
+                <div class="date-range">
+                  <div class="input-group">
+                    <i class="fas fa-calendar input-icon"></i>
+                    <input type="month" name="eduStartDate[]" required>
+                  </div>
+                  <div class="input-group">
+                    <i class="fas fa-calendar input-icon"></i>
+                    <input type="month" name="eduEndDate[]">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="add-more-btn" data-field="education">
+              <i class="fas fa-plus"></i> Add More Education
+            </button>
+          </div>
+
+          <div class="form-section" data-section="4">
+            <h2>Skills</h2>
+            <div class="form-group">
+              <div class="skills-container">
+                <div class="input-group">
+                  <i class="fas fa-lightbulb input-icon"></i>
+                  <input type="text" name="skillInput" id="skillInput" placeholder="Add a skill">
+                </div>
+                <button type="button" id="addSkillBtn" class="add-skill-btn">
+                  <i class="fas fa-plus"></i> Add
+                </button>
+              </div>
+              <div id="skillTags" class="skill-tags"></div>
+              <input type="hidden" name="skills" id="skillsHidden">
+            </div>
+          </div>
+
+          <div class="form-section" data-section="5">
+            <h2>Professional Summary</h2>
+            <div class="form-group">
+              <div class="input-group">
+                <i class="fas fa-pen input-icon"></i>
+                <textarea name="summary" placeholder="Write a professional summary" rows="6" required></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section" data-section="6">
+            <h2>Additional Information</h2>
+            <div id="additionalFields">
+              <div class="form-group additional-entry">
+                <div class="input-group">
+                  <i class="fas fa-award input-icon"></i>
+                  <select name="additionalType[]" class="additional-type">
+                    <option value="awards">Awards</option>
+                    <option value="certifications">Certifications</option>
+                    <option value="hobbies">Hobbies</option>
+                    <option value="languages">Languages</option>
+                    <option value="affiliations">Affiliations</option>
+                  </select>
+                </div>
+                <div class="input-group">
+                  <i class="fas fa-trophy input-icon"></i>
+                  <input type="text" name="additionalTitle[]" placeholder="Title">
+                </div>
+                <div class="input-group">
+                  <i class="fas fa-info-circle input-icon"></i>
+                  <textarea name="additionalDescription[]" placeholder="Description" rows="3"></textarea>
+                </div>
+              </div>
+            </div>
+            <button type="button" class="add-more-btn" data-field="additional">
+              <i class="fas fa-plus"></i> Add More Information
+            </button>
+          </div>
+
+          <div class="form-navigation">
+            <button type="button" class="prev-btn" style="display: none;">
+              <i class="fas fa-arrow-left"></i> Previous
+            </button>
+            <button type="button" class="next-btn">
+              Next <i class="fas fa-arrow-right"></i>
+            </button>
+            <button type="button" class="save-btn">
+              <i class="fas fa-save"></i> Save Draft
+            </button>
+            <button type="button" class="export-btn">
+              <i class="fas fa-file-export"></i> Export PDF
+            </button>
+          </div>
+        </form>
+
+        <div class="auto-save-toggle">
+          <label>
+            <input type="checkbox" id="autoSaveToggle" />
+            Auto-Save
+          </label>
+        </div>
+      </div>
+
+      <div class="preview-container">
+        <div class="preview-header">
+          <h3><i class="fas fa-eye"></i> Live Preview</h3>
+        </div>
+        <div id="resumePreview" class="resume-preview">
+          <!-- Preview content will be dynamically updated -->
+        </div>
+      </div>
+    </main>
+
+    <script type="module">
+      // Theme toggle functionality
+      const themeToggle = document.getElementById('themeToggle');
+      const html = document.documentElement;
+      const themeIcon = themeToggle.querySelector('i');
+
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        html.classList.toggle('dark', savedTheme === 'dark');
+        updateThemeIcon();
+      }
+
+      themeToggle.addEventListener('click', () => {
+        html.classList.toggle('dark');
+        localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+        updateThemeIcon();
+      });
+
+      function updateThemeIcon() {
+        const isDark = html.classList.contains('dark');
+        themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+      }
+    </script>
+  </body>
+</html>

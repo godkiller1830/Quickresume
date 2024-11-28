@@ -1,163 +1,195 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Resume Builder - Create Professional Resumes</title>
+<html lang="en" class="dark">
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
-</head>
-<body>
-    <nav>
-        <div class="nav-content">
-            <div class="logo">Resume Builder</div>
-            <div class="nav-links">
-                <a href="/" class="active">Home</a>
-                <a href="/templates.html">Templates</a>
-                <div class="auth-buttons">
-                    <button id="signInButton" class="btn btn-outline">Sign In</button>
-                    <button id="signUpButton" class="btn btn-primary">Sign Up</button>
-                </div>
-            </div>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuickResume - Professional Resume Builder</title>
+    <link rel="stylesheet" href="css/home.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <script src="js/home.js" type="module" defer></script>
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="nav-content">
+        <div class="logo">QuickResume</div>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#introduction">Introduction</a>
+          <a href="/login.html">Builder</a>
+          <button id="themeToggle" class="theme-toggle">
+            <i class="fas fa-moon"></i>
+          </button>
         </div>
+      </div>
     </nav>
-    
+
     <main>
-        <section class="hero">
-            <div class="hero-content">
-                <h1>Create Your Professional Resume</h1>
-                <p>Build impressive resumes in minutes with our easy-to-use builder</p>
-                <div class="hero-buttons">
-                    <button id="googleSignIn" class="btn btn-google">
-                        <i class="fab fa-google"></i>
-                        Continue with Google
-                    </button>
-                    <a href="/templates.html" class="btn btn-primary">
-                        <i class="fas fa-pencil-alt"></i>
-                        Start Building
-                    </a>
-                </div>
+      <section class="hero">
+        <div class="hero-content">
+          <h1 class="gradient-text">
+            Create Your Professional Resume in Minutes
+          </h1>
+          <p>Stand out from the crowd with a beautifully designed resume</p>
+          <div class="cta-buttons">
+            <a href="/login.html" class="cta-primary"
+              >Get Started <i class="fas fa-arrow-right"></i
+            ></a>
+            <button class="cta-secondary">View Templates</button>
+          </div>
+        </div>
+        <div class="hero-image">
+          <div class="floating-elements">
+            <div class="template-preview"></div>
+            <div class="floating-icon icon-1">
+              <i class="fas fa-briefcase"></i>
             </div>
-        </section>
+            <div class="floating-icon icon-2">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <div class="floating-icon icon-3"><i class="fas fa-star"></i></div>
+          </div>
+        </div>
+      </section>
 
-        <section class="features">
-            <div class="feature-card">
-                <i class="fas fa-paint-brush"></i>
-                <h3>Choose Template</h3>
-                <p>Select from our professionally designed templates</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-edit"></i>
-                <h3>Easy Editing</h3>
-                <p>Build using pre-written examples and suggestions</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-download"></i>
-                <h3>Download PDF</h3>
-                <p>Export your resume in professional PDF format</p>
-            </div>
-        </section>
+      <section id="features" class="features">
+        <h2>Why Choose QuickResume?</h2>
+        <div class="features-grid">
+          <div class="feature-card" data-aos="fade-up">
+            <i class="fas fa-wand-magic-sparkles"></i>
+            <h3>Professional Templates</h3>
+            <p>
+              Choose from our collection of ATS-friendly templates designed by
+              experts
+            </p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="100">
+            <i class="fas fa-bolt"></i>
+            <h3>Easy to Use</h3>
+            <p>Create your resume in minutes with our intuitive builder</p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="200">
+            <i class="fas fa-download"></i>
+            <h3>Export as PDF</h3>
+            <p>
+              Download your resume in PDF format, ready to send to employers
+            </p>
+          </div>
+          <div class="feature-card" data-aos="fade-up" data-aos-delay="300">
+            <i class="fas fa-cloud"></i>
+            <h3>Auto-Save</h3>
+            <p>Never lose your progress with automatic cloud saving</p>
+          </div>
+        </div>
+      </section>
 
-        <section class="steps">
-            <h2>Three Simple Steps</h2>
-            <div class="step-container">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <h3>Choose a Template</h3>
-                    <p>Select from our professional designs</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <h3>Fill in Details</h3>
-                    <p>Use our guided builder with smart suggestions</p>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <h3>Download</h3>
-                    <p>Get your polished PDF resume</p>
-                </div>
+      <section id="introduction" class="introduction">
+        <h2>How It Works</h2>
+        <div class="steps">
+          <div class="step-container">
+            <div class="step">
+              <div class="step-number">1</div>
+              <h3>Choose a Template</h3>
+              <p>Select from our professional designs</p>
             </div>
-        </section>
+            <div class="step">
+              <div class="step-number">2</div>
+              <h3>Fill in Details</h3>
+              <p>Use our guided builder with smart suggestions</p>
+            </div>
+            <div class="step">
+              <div class="step-number">3</div>
+              <h3>Download</h3>
+              <p>Get your polished PDF resume</p>
+            </div>
+          </div>
+        </div>
+        <div class="intro-features">
+          <div class="feature-card">
+            <i class="fas fa-paint-brush"></i>
+            <h3>Choose Template</h3>
+            <p>Select from our professionally designed templates</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-edit"></i>
+            <h3>Easy Editing</h3>
+            <p>Build using pre-written examples and suggestions</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-download"></i>
+            <h3>Download PDF</h3>
+            <p>Export your resume in professional PDF format</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="templates">
+        <h2>Professional Templates</h2>
+        <div class="template-slider">
+          <div class="template-card">
+            <div class="template-preview modern"></div>
+            <h3>Modern</h3>
+            <a href="/login.html" class="use-template">Use Template</a>
+          </div>
+          <div class="template-card">
+            <div class="template-preview elegant"></div>
+            <h3>Elegant</h3>
+            <a href="/login.html" class="use-template">Use Template</a>
+          </div>
+          <div class="template-card">
+            <div class="template-preview default"></div>
+            <h3>Classic</h3>
+            <a href="/login.html" class="use-template">Use Template</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta-section">
+        <div class="cta-content">
+          <h2>Ready to Build Your Professional Resume?</h2>
+          <p>
+            Join thousands of job seekers who've successfully landed their dream
+            jobs
+          </p>
+          <a href="/login.html" class="cta-primary"
+            >Create Your Resume Now <i class="fas fa-arrow-right"></i
+          ></a>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Resume Builder</h4>
-                <p>Create professional resumes in minutes</p>
-            </div>
-            <div class="footer-section">
-                <h4>Quick Links</h4>
-                <a href="/templates.html">Templates</a>
-                <a href="/pricing.html">Pricing</a>
-                <a href="/about.html">About Us</a>
-            </div>
-            <div class="footer-section">
-                <h4>Contact</h4>
-                <p>Email: support@resumebuilder.com</p>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
-                    <a href="#"><i class="fab fa-github"></i></a>
-                </div>
-            </div>
+      <div class="footer-content">
+        <div class="footer-section">
+          <h3>QuickResume</h3>
+          <p>Create professional resumes in minutes</p>
         </div>
-        <div class="footer-bottom">
-            <p>&copy; 2024 Resume Builder. All rights reserved.</p>
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <a href="/login.html">Resume Builder</a>
+          <a href="#">Templates</a>
+          <a href="#">Pricing</a>
         </div>
+        <div class="footer-section">
+          <h4>Resources</h4>
+          <a href="#">Resume Tips</a>
+          <a href="#">Career Advice</a>
+          <a href="#">FAQ</a>
+        </div>
+        <div class="footer-section">
+          <h4>Connect</h4>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 QuickResume. All rights reserved.</p>
+      </div>
     </footer>
-
-    <!-- Auth Modal -->
-    <div id="authModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <div class="auth-tabs">
-                <button class="auth-tab active" data-tab="signin">Sign In</button>
-                <button class="auth-tab" data-tab="signup">Sign Up</button>
-            </div>
-            <div id="signinForm" class="auth-form active">
-                <h2>Welcome Back</h2>
-                <form id="loginForm">
-                    <div class="form-group">
-                        <label for="loginEmail">Email</label>
-                        <input type="email" id="loginEmail" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="loginPassword">Password</label>
-                        <input type="password" id="loginPassword" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Sign In</button>
-                </form>
-                <div class="auth-divider">
-                    <span>or</span>
-                </div>
-                <button id="modalGoogleSignIn" class="btn btn-google">
-                    <i class="fab fa-google"></i>
-                    Continue with Google
-                </button>
-            </div>
-            <div id="signupForm" class="auth-form">
-                <h2>Create Account</h2>
-                <form id="registerForm">
-                    <div class="form-group">
-                        <label for="signupName">Full Name</label>
-                        <input type="text" id="signupName" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="signupEmail">Email</label>
-                        <input type="email" id="signupEmail" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="signupPassword">Password</label>
-                        <input type="password" id="signupPassword" required>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Sign Up</button>
-                </form>
-            </div>
-        </div>
-    </div>
-
-    <script type="module" src="js/firebaseConfig.js"></script>
-    <script type="module" src="js/auth.js"></script>
-</body>
+  </body>
 </html>

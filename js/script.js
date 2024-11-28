@@ -3,8 +3,6 @@ import { PreviewManager } from './js/preview.js';
 import { NavigationManager } from './js/navigation.js';
 import { StorageManager } from './js/storage.js';
 import { ExportManager } from './js/export.js';
-import { auth } from './js/firebaseConfig.js';
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('resumeForm');
@@ -17,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const storageManager = new StorageManager(form, skillsManager);
   const exportManager = new ExportManager();
 
-  // Add more fields functionality
+  // Event listener for dynamically adding more fields (e.g., more experience entries)
   document.querySelectorAll('.add-more-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const fieldType = btn.dataset.field;
@@ -28,28 +26,20 @@ document.addEventListener('DOMContentLoaded', () => {
           const newEntry = entry.cloneNode(true);
           newEntry.querySelectorAll('input, textarea').forEach(input => input.value = '');
           container.appendChild(newEntry);
+          
+          // Ensure the preview updates when a new entry is added
           previewManager.updatePreview();
         }
       }
     });
   });
 
-  // Real-time preview update
+  // Real-time preview update on any form input change
   form.addEventListener('input', () => previewManager.updatePreview());
 
-  // Initialize first section
+  // Load draft if it exists in Firebase
+  storageManager.loadDraft();
+
+  // Show the first section of the resume form
   navigationManager.showSection(1);
-  
-  // Wait for auth state before loading draft
-  onAuthStateChanged(auth, async (user) => {
-    if (user) {
-      const loaded = await storageManager.loadDraft();
-      if (loaded) {
-        // Update preview after loading data
-        previewManager.updatePreview();
-      }
-    } else {
-      window.location.href = 'login.html';
-    }
-  });
 });

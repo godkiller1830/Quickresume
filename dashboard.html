@@ -1,66 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard - Resume Builder</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Dashboard - QuickResume</title>
+    <link rel="stylesheet" href="css/home.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">QuickResume</div>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <button id="themeToggle" class="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <button class="logout-btn" id="logoutButton">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Log Out
+                </button>
+            </div>
+        </div>
+    </nav>
+
     <div class="dashboard-container">
-        <header>
-            <nav>
-                <h1>Welcome, <span id="userName">User</span>!</h1>
-                <div class="nav-buttons">
-                    <button id="signOutButton" class="btn btn-secondary">Sign Out</button>
+        <div class="dashboard-header">
+            <div class="welcome-section">
+                <div class="user-avatar">
+                    <i class="fas fa-user"></i>
                 </div>
-            </nav>
-        </header>
+                <div class="welcome-text">
+                    <h1>Welcome, <span id="userName">User</span>!</h1>
+                    <p>Manage your resumes and create new ones</p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="new-resume-btn" id="newResumeButton">
+                    <i class="fas fa-plus"></i>
+                    Create New Resume
+                </button>
+            </div>
+        </div>
 
-        <main>
-            <section class="saved-resumes">
-                <h2>Your Resumes</h2>
-                <div id="savedResumes" class="templates-grid">
-                    <!-- Saved resumes will be loaded here -->
-                </div>
-            </section>
+        <section class="dashboard-section">
+            <h2><i class="fas fa-file-alt"></i> Your Resumes</h2>
+            <div id="savedResumes" class="resumes-grid">
+                <!-- Resumes will be dynamically loaded here -->
+            </div>
+        </section>
 
-            <section class="templates">
-                <h2>Resume Templates</h2>
-                <div class="templates-grid">
-                    <div class="template-card">
-                        <img src="templates/professional.png" alt="Professional Template">
-                        <div class="template-info">
-                            <h3>Professional</h3>
-                            <p>Clean and modern design for corporate positions</p>
-                            <button class="btn btn-primary" onclick="window.location.href='resume-builder.html?template=professional'">
-                                Use Template
-                            </button>
-                        </div>
-                    </div>
-                    <div class="template-card">
-                        <img src="templates/creative.png" alt="Creative Template">
-                        <div class="template-info">
-                            <h3>Creative</h3>
-                            <p>Stand out with a unique layout for creative roles</p>
-                            <button class="btn btn-primary" onclick="window.location.href='resume-builder.html?template=creative'">
-                                Use Template
-                            </button>
-                        </div>
-                    </div>
-                    <div class="template-card coming-soon">
-                        <div class="template-info">
-                            <h3>More Templates Coming Soon</h3>
-                            <p>We're working on adding more professional templates</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
+        <section class="dashboard-section">
+            <h2><i class="fas fa-th-large"></i> Resume Templates</h2>
+            <div id="templateContainer" class="templates-grid">
+                <!-- Templates will be dynamically loaded here -->
+            </div>
+        </section>
     </div>
 
-    <script type="module" src="js/firebaseConfig.js"></script>
-    <script type="module" src="js/auth.js"></script>
     <script type="module" src="js/dashboard.js"></script>
+    <script type="module">
+        // Theme toggle functionality
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const themeIcon = themeToggle.querySelector('i');
+
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme) {
+            html.classList.toggle('dark', savedTheme === 'dark');
+            updateThemeIcon();
+        }
+
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            localStorage.setItem('theme', html.classList.contains('dark') ? 'dark' : 'light');
+            updateThemeIcon();
+        });
+
+        function updateThemeIcon() {
+            const isDark = html.classList.contains('dark');
+            themeIcon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+        }
+    </script>
 </body>
 </html>

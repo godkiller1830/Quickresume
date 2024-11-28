@@ -1,0 +1,14 @@
+/* base.scss */
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #f8fafc;
+}
+
+.resume-preview {
+  padding: 1rem;
+  font-size: 14px;
+}
+
+/* Add other general styling here */
+
+/*# sourceMappingURL=base.css.map */

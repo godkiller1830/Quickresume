@@ -1,0 +1,115 @@
+/* Default Template */
+.resume-preview {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Lato', sans-serif;
+  color: #333;
+  line-height: 1.5;
+  background: white;
+}
+
+.header {
+  padding: 40px;
+  background: #2c3e50;
+  color: white;
+}
+
+.full-name {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+#position {
+  font-size: 1.4rem;
+  color: #e74c3c;
+  margin-bottom: 15px;
+}
+
+.contact-info {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  font-size: 0.9rem;
+}
+
+.contact-info i {
+  color: #e74c3c;
+  margin-right: 5px;
+}
+
+.social-links {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.social-link {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9rem;
+}
+
+.social-link i {
+  color: #e74c3c;
+}
+
+.social-link:hover {
+  text-decoration: underline;
+}
+
+/* Rest of the styles remain the same */
+.separator {
+  color: #e74c3c;
+}
+
+.about {
+  margin-top: 20px;
+}
+
+.details {
+  padding: 40px;
+}
+
+.section {
+  margin-bottom: 30px;
+}
+
+.section__title {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  border-bottom: 2px solid #e74c3c;
+  padding-bottom: 5px;
+  margin-bottom: 20px;
+}
+
+.section__list-item {
+  margin-bottom: 25px;
+}
+
+.section__list-item h3 {
+  color: #2c3e50;
+  margin-bottom: 5px;
+}
+
+.light {
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag {
+  background: #ecf0f1;
+  padding: 5px 15px;
+  border-radius: 15px;
+  font-size: 0.9rem;
+}

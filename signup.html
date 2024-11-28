@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - QuickResume</title>
+    <title>Sign Up - QuickResume</title>
     <link rel="stylesheet" href="css/home.css">
     <link rel="stylesheet" href="css/auth.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -24,11 +24,11 @@
     <div class="auth-container">
         <div class="auth-card">
             <div class="auth-header">
-                <h1>Welcome Back</h1>
-                <p>Sign in to continue building your resume</p>
+                <h1>Create Account</h1>
+                <p>Start building your professional resume</p>
             </div>
 
-            <form id="loginForm">
+            <form id="signupForm">
                 <div class="form-group">
                     <label for="email">Email Address</label>
                     <input type="email" id="email" required placeholder="Enter your email">
@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label for="password">Password</label>
                     <div class="password-container">
-                        <input type="password" id="password" required placeholder="Enter your password">
+                        <input type="password" id="password" required placeholder="Create a password">
                         <button type="button" class="toggle-password" id="togglePassword">
                             <i class="fas fa-eye"></i>
                         </button>
@@ -46,27 +46,27 @@
 
                 <div id="errorMessage" class="error-message"></div>
 
-                <button type="submit" class="auth-button">Sign In</button>
+                <button type="submit" class="auth-button">Sign Up</button>
 
                 <div class="social-auth">
                     <div class="social-auth-divider">
                         <span>Or continue with</span>
                     </div>
-                    <button type="button" id="googleSignIn" class="google-auth-button">
+                    <button type="button" id="googleSignUp" class="google-auth-button">
                         <i class="fab fa-google"></i>
-                        Sign in with Google
+                        Sign up with Google
                     </button>
                 </div>
 
                 <div class="auth-footer">
-                    <p>Don't have an account? <a href="/signup.html">Sign up</a></p>
+                    <p>Already have an account? <a href="/login.html">Sign in</a></p>
                 </div>
             </form>
         </div>
     </div>
 
     <script type="module">
-        import { signInWithEmail } from './js/auth/emailAuth.js';
+        import { signUpWithEmail } from './js/auth/emailAuth.js';
         import { signInWithGoogle } from './js/auth/googleAuth.js';
         import { getAuthErrorMessage } from './js/auth/errorHandler.js';
         import { auth } from './js/firebaseConfig.js';
@@ -106,24 +106,24 @@
         });
 
         // Form submission
-        const loginForm = document.getElementById('loginForm');
+        const signupForm = document.getElementById('signupForm');
         const errorMessage = document.getElementById('errorMessage');
-        const googleSignInButton = document.getElementById('googleSignIn');
+        const googleSignUpButton = document.getElementById('googleSignUp');
 
-        loginForm.addEventListener('submit', async (e) => {
+        signupForm.addEventListener('submit', async (e) => {
             e.preventDefault();
             const email = document.getElementById('email').value;
             const password = passwordField.value;
 
             try {
-                await signInWithEmail(email, password);
+                await signUpWithEmail(email, password);
             } catch (error) {
                 errorMessage.textContent = getAuthErrorMessage(error.code);
                 errorMessage.classList.add('visible');
             }
         });
 
-        googleSignInButton.addEventListener('click', async () => {
+        googleSignUpButton.addEventListener('click', async () => {
             try {
                 await signInWithGoogle();
             } catch (error) {

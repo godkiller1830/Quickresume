@@ -1,18 +1,8 @@
 {
-  "name": "resume-builder",
-  "private": true,
-  "version": "1.0.0",
-  "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "preview": "vite preview"
+    "start": "servor --reload"
   },
   "dependencies": {
-    "firebase": "^10.7.1",
-    "html2pdf.js": "^0.10.1"
-  },
-  "devDependencies": {
-    "vite": "^5.0.10"
+    "servor": "^4.0.2"
   }
 }

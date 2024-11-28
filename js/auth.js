@@ -1,52 +1,45 @@
-import { 
-    auth, 
-    GoogleAuthProvider, 
-    signInWithPopup, 
-    signOut,
-    db,
-    doc,
-    setDoc
-} from './firebaseConfig.js';
+import { auth, provider } from './firebaseConfig.js';
+import { signInWithPopup, onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js';
 
-// Handle Google Sign In
-const googleSignInButton = document.getElementById("googleSignIn");
+document.addEventListener("DOMContentLoaded", () => {
+  const googleSignInButton = document.getElementById("googleSignIn");
+  const errorMessageElement = document.getElementById("errorMessage"); // Assumes an element exists for displaying errors
 
-if (googleSignInButton) {
+  // Redirect if user is already signed in
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      window.location.href = "dashboard.html";
+    }
+  });
+
+  if (googleSignInButton) {
     googleSignInButton.addEventListener("click", async () => {
-        const provider = new GoogleAuthProvider();
-        try {
-            const result = await signInWithPopup(auth, provider);
-            const user = result.user;
-            
-            // Create user document in Firestore if it doesn't exist
-            await setDoc(doc(db, "users", user.uid), {
-                name: user.displayName,
-                email: user.email,
-                photoURL: user.photoURL,
-                createdAt: new Date().toISOString()
-            }, { merge: true });
-
-            window.location.href = "dashboard.html";
-        } catch (error) {
-            console.error("Error during sign-in:", error);
-            const errorMessage = document.getElementById("errorMessage");
-            if (errorMessage) {
-                errorMessage.textContent = error.message;
-            }
-        }
+      try {
+        const result = await signInWithPopup(auth, provider);
+        window.location.href = "dashboard.html"; // Redirect after successful login
+      } catch (error) {
+        displayErrorMessage(error, errorMessageElement);
+      }
     });
-}
+  }
+});
 
-// Handle Sign Out
-const signOutButton = document.getElementById("signOutButton");
+// Helper function to display error messages
+function displayErrorMessage(error, element) {
+  if (!element) return;
 
-if (signOutButton) {
-    signOutButton.addEventListener("click", async () => {
-        try {
-            await signOut(auth);
-            window.location.href = "/";
-        } catch (error) {
-            console.error("Error signing out:", error);
-        }
-    });
+  let message;
+  switch (error.code) {
+    case "auth/popup-closed-by-user":
+      message = "Sign-in was canceled. Please try again.";
+      break;
+    case "auth/network-request-failed":
+      message = "Network error. Check your connection and try again.";
+      break;
+    default:
+      message = "An error occurred during sign-in. Please try again.";
+  }
+
+  element.textContent = message;
+  element.classList.add("visible");
 }

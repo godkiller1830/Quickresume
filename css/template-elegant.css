@@ -1,0 +1,114 @@
+/* Elegant Template */
+.resume-preview {
+  max-width: 800px;
+  margin: 0 auto;
+  font-family: 'Lato', sans-serif;
+  color: #2d3748;
+  background: white;
+  position: relative;
+}
+
+.resume-preview::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 100%;
+  background: #1a202c;
+}
+
+.header {
+  position: relative;
+  padding: 60px 40px;
+  padding-left: calc(30% + 40px);
+}
+
+.full-name {
+  font-size: 3rem;
+  font-weight: 300;
+  line-height: 1.2;
+  margin-bottom: 15px;
+  color: #1a202c;
+}
+
+.contact-info {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 30%;
+  padding: 40px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-size: 0.9rem;
+}
+
+#position {
+  font-size: 1.4rem;
+  color: #4a5568;
+  margin-bottom: 20px;
+  font-weight: 300;
+}
+
+.details {
+  position: relative;
+  padding: 40px;
+  padding-left: calc(30% + 40px);
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.section__title {
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #1a202c;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+.section__list-item {
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.section__list-item::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #1a202c;
+}
+
+.section__list-item h3 {
+  color: #1a202c;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+.light {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.skill-tag {
+  background: #f7fafc;
+  padding: 8px 20px;
+  border-radius: 25px;
+  font-size: 0.9rem;
+  color: #1a202c;
+  border: 1px solid #e2e8f0;
+}
